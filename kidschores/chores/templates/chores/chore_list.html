@@ -1,0 +1,28 @@
+{% extends 'chores/base.html' %}
+
+
+
+
+
+<div class="container-fluid">
+    <p>
+        {% block content %}
+
+        <P>List of available chores</P>
+
+        {% for chore in chores %}
+
+        <li>
+            <a href="{% url 'chores:chore_list' %}">{{ chore }}</a>
+        </li>
+        {% empty %}
+        <li>
+            No chores available
+        </li>
+        {% endfor %}
+
+        {% endblock %}
+
+    </p>
+
+</div>
