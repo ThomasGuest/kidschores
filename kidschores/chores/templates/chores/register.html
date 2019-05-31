@@ -1,0 +1,20 @@
+{% extends 'chores/base.html' %}
+
+
+<div class="container">
+    {% block content %}
+
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button style="background-color:rgba(221, 19, 19, 0.4); color:blue" class="btn btn-outline-info"
+            type="submit">Sign Up</button>
+
+    </form>
+
+    Already have an account? <a href="/login" target="blank"><strong>Login</strong></a>
+
+    {% endblock %}
+</div>
