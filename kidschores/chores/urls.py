@@ -7,6 +7,8 @@ app_name = 'chores'
 urlpatterns = [
     path('', views.home, name='home'),
     path('chore_list/', views.chore_list, name='chore_list'),
-    path('register/', views.register, name='register')
+    path('register/', views.register, name='register'),
+    path("logout", views.logout_request, name="logout"),
+    path("login", views.login_request, name='login')
 
 ]
