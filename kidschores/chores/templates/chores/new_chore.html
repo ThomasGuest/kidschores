@@ -1,0 +1,18 @@
+{% extends 'chores/base.html' %}
+
+
+{% block content %}
+
+
+
+
+<p>New Chore</p>
+
+<form action="{% url 'chores:new_chore' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Save</button>
+</form>
+
+
+{% endblock %}

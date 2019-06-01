@@ -13,7 +13,7 @@
         {% for chore in chores %}
 
         <li>
-            <a href="{% url 'chores:chore_list' %}">{{ chore }}</a>
+            <a href="{% url 'chores:edit_chore' chore.id %}">{{ chore }}</a>
         </li>
         {% empty %}
         <li>

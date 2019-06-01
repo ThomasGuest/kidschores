@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Chores
+from .forms import ChoreForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -17,6 +20,49 @@ def chore_list(request):
     chores = Chores.objects.order_by('name')
     context = {'chores' : chores}
     return render(request, 'chores/chore_list.html', context)
+
+def new_chore(request):
+    """admin user creates new available chore"""
+    if request.method != 'POST':
+        # Create blank form
+        form = ChoreForm()
+    else:
+        # Post data submitted, process data
+        form = ChoreForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect(reverse('chores:chore_list'))
+
+    context ={'form' : form}
+    return render(request, 'chores/new_chore.html', context)
+
+
+def edit_chore(request, chores_id):
+    """User edits available chore"""
+    chore = Chores.objects.get(id=chores_id)
+    exp = chore.expire_date
+    pay = chore.pay
+
+    if request.method != "POST":
+        # Initial request, prefill form with current chore
+        form = ChoreForm(instance=chore)
+    else:
+        # POST data submitted; process data
+        form = ChoreForm(instance=chore, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('chores:chore_list'))
+
+    context = {'chore': chore, 'form':form, 'exp' : exp, 'pay' : pay}
+    return render(request, 'chores/edit_chore.html', context)
+
+
+
+
+
+
+# -------Below is User Views, Login, Logout, Register --------
 
 def register(request):
     if request.method == "POST":
@@ -66,4 +112,3 @@ def login_request(request):
                 template_name = "chores/login.html",
                 context={"form":form})
 
-                

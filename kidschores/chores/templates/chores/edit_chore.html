@@ -1,0 +1,18 @@
+{% extends 'chores/base.html' %}
+
+
+{% block content %}
+
+
+<p> {{ chore }} --- ${{ pay }} --- {{ exp }} </p>
+
+<p>Complete Chore</p>
+
+<form action="{% url 'chores:edit_chore' chore.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Save</button>
+</form>
+
+
+{% endblock %}
