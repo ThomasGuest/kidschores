@@ -2,8 +2,16 @@
 
 
 {% block content %}
-<p>home</p>
+<div>
+    {% if currentUser is admin %}
+    <p><a href="{% url 'chores:new_chore' %}">Add New Chore</a></p>
 
 
 
+    {% else %}
+    <p>Home</p>
+    {% endif %}
+
+
+</div>
 {% endblock %}

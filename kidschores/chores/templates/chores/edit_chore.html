@@ -6,13 +6,25 @@
 
 <p> {{ chore }} --- ${{ pay }} --- {{ exp }} </p>
 
-<p>Complete Chore</p>
+<p>Edit Chore</p>
 
+{% if currentUser is admin %}
 <form action="{% url 'chores:edit_chore' chore.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button name="submit">Save</button>
 </form>
 
+{% else %}
+
+<p>Complete Chore</p>
+
+<form action="{% url 'chores:edit_chore' chore.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Complete Chore</button>
+</form>
+
+{% endif %}
 
 {% endblock %}

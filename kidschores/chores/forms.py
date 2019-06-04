@@ -11,3 +11,8 @@ class ChoreForm(forms.ModelForm):
         fields = ['name', 'expire_date', 'pay']
         labels = {'text': ''}
         widgets = {'expire_date': DateInput()}
+
+class CompleteForm(forms.ModelForm):
+    class Meta:
+        model = Chores
+        fields = ['completed']

@@ -3,7 +3,7 @@
 ----------------------
 
 {% if user.is_authenticated %}
-Hi {{ user.username }}!
+<strong>Hi {{ user.username }}!</strong>
 <a href="{% url 'chores:logout' %}">Logout</a>
 {% else %}
 <p>You are not logged in</p>
@@ -13,5 +13,6 @@ Hi {{ user.username }}!
 
 <div class="container">
     {% block content %}
+
     {% endblock %}
 </div>
