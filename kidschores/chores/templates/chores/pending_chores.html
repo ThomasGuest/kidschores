@@ -1,0 +1,17 @@
+{% extends 'chores/base.html' %}
+
+
+{% block content %}
+<div>
+    {% for chore in chores %}
+    <li>
+        <a href="{% url 'chores:approve_chores' chore.id %}">{{chore}}</a>
+    </li>
+    {% empty %}
+    <li>
+        <p>no pending chores</p>
+    </li>
+    {% endfor %}
+
+</div>
+{% endblock %}

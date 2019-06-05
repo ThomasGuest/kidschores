@@ -3,9 +3,9 @@
 
 {% block content %}
 <div>
-    {% if currentUser is admin %}
+    {% if user.is_authenticated and currentUser is admin %}
     <p><a href="{% url 'chores:new_chore' %}">Add New Chore</a></p>
-
+    <p><a href="{% url 'chores:pending_chores' %}">Pending Chores</a></p>
 
 
     {% else %}

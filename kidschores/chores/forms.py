@@ -15,4 +15,9 @@ class ChoreForm(forms.ModelForm):
 class CompleteForm(forms.ModelForm):
     class Meta:
         model = Chores
-        fields = ['completed']
+        fields = ['completed', 'image']
+
+class ApproveForm(forms.ModelForm):
+    class Meta:
+        model = Chores
+        fields = ['approved']

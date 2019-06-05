@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Chores
-from .forms import ChoreForm, CompleteForm
+from .forms import ChoreForm, CompleteForm, ApproveForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -17,7 +19,7 @@ def home(request):
 def chore_list(request):
     """Show list of chores"""
     
-    chores = Chores.objects.order_by('name')
+    chores = Chores.objects.order_by('name').exclude(completed=True)
 
     context = {'chores' : chores}
     return render(request, 'chores/chore_list.html', context)
@@ -38,14 +40,13 @@ def new_chore(request):
     context ={'form' : form}
     return render(request, 'chores/new_chore.html', context)
 
-
+@login_required
 def edit_chore(request, chores_id):
     """User edits available chore"""
     chore = Chores.objects.get(id=chores_id)
     exp = chore.expire_date
     pay = chore.pay
     
-
     if request.user.get_username() == 'admin':
         if request.method != "POST":
             # Initial request, prefill form with current chore
@@ -62,17 +63,41 @@ def edit_chore(request, chores_id):
             form = CompleteForm(instance=chore)
         else:
             # POST data submitted; process data
-            form = CompleteForm(instance=chore, data=request.POST)
+            form = CompleteForm(instance=chore, data=request.POST, files=request.FILES)
             if form.is_valid():
-                form.save()
+                new = form.save(commit=False)
+                new.image = request.FILES.get('image')
+                new.owner = request.user
+                new.save()
+                #form.save()
                 return HttpResponseRedirect(reverse('chores:chore_list'))
 
     context = {'chore': chore, 'form':form, 'exp' : exp, 'pay' : pay}
     return render(request, 'chores/edit_chore.html', context)
 
 
+def pending_chores(request):
+    """list pending chores waitning for approval"""
+    chores = Chores.objects.order_by('name').filter(completed=True).exclude(approved=True)
+    
+    context = {'chores' : chores}
+    return render(request, 'chores/pending_chores.html', context)
 
+def approve_chores(request, chores_id):
+    chore = Chores.objects.get(id=chores_id)
 
+    if request.method != "POST":
+            # Initial request, prefill form with current chore
+        form = ApproveForm(instance=chore)
+    else:
+            # POST data submitted; process data
+        form = ApproveForm(instance=chore, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('chores:pending_chores'))
+
+    context = {'chore':chore, 'form':form}
+    return render(request, 'chores/approve_chore.html', context)
 
 
 # -------Below is User Views, Login, Logout, Register --------
