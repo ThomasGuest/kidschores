@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Chores
+from .models import Chores, Profile
 from .forms import ChoreForm, CompleteForm, ApproveForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -85,6 +86,8 @@ def pending_chores(request):
 
 def approve_chores(request, chores_id):
     chore = Chores.objects.get(id=chores_id)
+    pay = chore.pay
+    
 
     if request.method != "POST":
             # Initial request, prefill form with current chore
@@ -93,12 +96,19 @@ def approve_chores(request, chores_id):
             # POST data submitted; process data
         form = ApproveForm(instance=chore, data=request.POST)
         if form.is_valid():
-            form.save()
+            approval = form.save(commit=False)
+            chore.owner.profile.deposit(pay)
+            approval.save()
             return HttpResponseRedirect(reverse('chores:pending_chores'))
 
     context = {'chore':chore, 'form':form}
     return render(request, 'chores/approve_chore.html', context)
 
+@login_required
+def profile(request):
+
+    return render(request, 'chores/profile.html')
+    
 
 # -------Below is User Views, Login, Logout, Register --------
 

@@ -11,8 +11,14 @@
 
 <form action="{% url 'chores:edit_chore' chore.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Save chore</button>
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Edit Chore</legend>
+        {{ form }}
+    </fieldset>
+
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Save chore</button>
+    </div>
 </form>
 
 {% endblock %}

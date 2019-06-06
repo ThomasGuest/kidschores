@@ -17,9 +17,18 @@ class Chores(models.Model):
     def __str__(self):
         return self.name
 
-    @property
-    def expired(self):
-        if datetime.now() > self.expire_date:
-            return True
-        return False
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    balance = models.FloatField(default=0.00)
         
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    def deposit(self, amount):
+        self.balance += amount
+        self.save()
+
+    def withdraw(self, amount):
+        self.balance -= amount
+        self.save()
+

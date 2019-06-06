@@ -3,6 +3,10 @@
 
 {% block content %}
 
+{{chore.pay}}
+{{chore.owner}}
+<p>Balance</p>{{chore.owner.profile.balance}}
+
 <form action="{% url 'chores:approve_chores' chore.id %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

@@ -3,13 +3,12 @@
 
 {% block content %}
 <div>
-    {% if user.is_authenticated and currentUser is admin %}
+    {% if request.user.is_superuser  %}
     <p><a href="{% url 'chores:new_chore' %}">Add New Chore</a></p>
     <p><a href="{% url 'chores:pending_chores' %}">Pending Chores</a></p>
 
-
     {% else %}
-    <p>Home</p>
+    <p><a href="{% url 'chores:profile' %}">Profile</a></p>
     {% endif %}
 
 
