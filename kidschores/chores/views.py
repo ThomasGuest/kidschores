@@ -160,3 +160,9 @@ def login_request(request):
                 template_name = "chores/login.html",
                 context={"form":form})
 
+
+
+#below is for index.html reference for styling
+
+def index(request):
+    return render('chores/index.html')

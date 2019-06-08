@@ -15,4 +15,5 @@ urlpatterns = [
     path("pending_chores/", views.pending_chores, name='pending_chores'),
     path("approve_chores/<int:chores_id>/", views.approve_chores, name='approve_chores'),
     path("profile/", views.profile, name="profile"),
+    path("index/", views.index, name="index"),
 ]
