@@ -5,7 +5,9 @@
 
 {{chore.pay}}
 {{chore.owner}}
-<p>Balance</p>{{chore.owner.profile.balance}}
+<p>Balance -- {{chore.owner.profile.balance}}</p>
+
+<img src="{{chore.image.url}}">
 
 <form action="{% url 'chores:approve_chores' chore.id %}" method="POST">
     {% csrf_token %}
