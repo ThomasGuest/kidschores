@@ -1,20 +1,24 @@
 {% extends 'chores/base.html' %}
 
 
-
-
-
 <div class="container-fluid">
+    <br>
     <p>
+        <br>
         {% block content %}
-
-        <P>List of available chores</P>
-
+        <br>
+        <br>
+        <br>
+        <h1 class="text-center">Available Chores</h1>
+        <br>
         {% for chore in chores %}
 
-        <li>
-            <a href="{% url 'chores:edit_chore' chore.id %}">{{ chore }}</a>
-        </li>
+        <div class="list-group">
+            <a href="{% url 'chores:edit_chore' chore.id %}"
+                class="text-sm-center list-group-item list-group-item-action active">
+                {{ chore }}
+            </a>
+        </div>
         {% empty %}
         <li>
             No chores available

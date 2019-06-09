@@ -1,23 +1,29 @@
 {% extends 'chores/base.html' %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
 
 
-<p> {{ chore }} --- ${{ pay }} --- {{ exp }} </p>
+<br>
+<br>
 
-<p>Edit Chore</p>
+<form class="text-center border border-light p-5" action="{% url 'chores:edit_chore' chore.id %}" method="post"
+    enctype="multipart/form-data">
+    <p class="h4 mb-4">Complete Chore</p>
+    <p class="h4 mb-4">Chore : {{ chore }}</p>
+    <p class="h4 mb-4">This chore is worth ${{pay}}</p>
+    <p class="h4 mb-4">This chore needs to be completed by {{exp}}</p>
 
 
-<form action="{% url 'chores:edit_chore' chore.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
         <legend class="border-bottom mb-4">Edit Chore</legend>
-        {{ form }}
+        {{ form|crispy }}
     </fieldset>
 
     <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Save chore</button>
+        <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
     </div>
 </form>
 

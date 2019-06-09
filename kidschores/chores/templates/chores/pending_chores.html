@@ -2,16 +2,23 @@
 
 
 {% block content %}
+<br>
+<br>
+<br>
 <div>
-    {% for chore in chores %}
-    <li>
-        <a href="{% url 'chores:approve_chores' chore.id %}">{{chore}}</a>
-    </li>
-    {% empty %}
-    <li>
-        <p>no pending chores</p>
-    </li>
-    {% endfor %}
+    <h1 class="text-center">Approve Chores</h1>
 
-</div>
-{% endblock %}
+    {% for chore in chores %}
+    <div class="list-group">
+        <a href="{% url 'chores:approve_chores' chore.id %}"
+            class="text-sm-center list-group-item list-group-item-action active">
+            {{ chore }}
+        </a>
+        {% empty %}
+        <li>
+            <p>no pending chores</p>
+        </li>
+        {% endfor %}
+
+    </div>
+    {% endblock %}

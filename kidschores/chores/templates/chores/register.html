@@ -1,20 +1,25 @@
 {% extends 'chores/base.html' %}
 
+{% load crispy_forms_tags %}
 
 <div class="container">
     {% block content %}
 
     <br>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
+    <br>
 
-        <button style="background-color:rgba(221, 19, 19, 0.4); color:blue" class="btn btn-outline-info"
-            type="submit">Sign Up</button>
+    <form class="text-center border border-light p-5" method="POST">
+        <p class="h4 mb-4">Sign Up</p>
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <button class="btn btn-info btn-block my-4" type="submit">Sign Up</button>
+
+
+        Already have an account? <a href="/login" target="blank"><strong>Login</strong></a>
 
     </form>
 
-    Already have an account? <a href="/login" target="blank"><strong>Login</strong></a>
 
     {% endblock %}
 </div>

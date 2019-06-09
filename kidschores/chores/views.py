@@ -165,4 +165,4 @@ def login_request(request):
 #below is for index.html reference for styling
 
 def index(request):
-    return render('chores/index.html')
+    return render(request, 'chores/index.html')

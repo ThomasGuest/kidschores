@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,20 +9,19 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="{% static 'https://use.fontawesome.com/releases/v5.8.2/css/all.css' %}">
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
-  <link href="css/style.min.css" rel="stylesheet">
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
   <style type="text/css">
     @media (min-width: 800px) and (max-width: 850px) {
       .navbar:not(.top-nav-collapse) {
         background: #1C2331 !important;
       }
     }
-
   </style>
 </head>
 
@@ -55,7 +56,8 @@
             <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Free
+            <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+              target="_blank">Free
               download</a>
           </li>
           <li class="nav-item">
@@ -76,8 +78,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
+            <a href="https://github.com/mdbootstrap/bootstrap-material-design"
+              class="nav-link border border-light rounded" target="_blank">
               <i class="fab fa-github mr-2"></i>MDB GitHub
             </a>
           </li>
@@ -105,7 +107,8 @@
 
       <!--First slide-->
       <div class="carousel-item active">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view"
+          style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -126,7 +129,8 @@
                   available. Create your own, stunning website.</strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/"
+                class="btn btn-outline-white btn-lg">Start
                 free tutorial
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
@@ -142,7 +146,8 @@
 
       <!--Second slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view"
+          style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -163,7 +168,8 @@
                   available. Create your own, stunning website.</strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/"
+                class="btn btn-outline-white btn-lg">Start
                 free tutorial
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
@@ -179,7 +185,8 @@
 
       <!--Third slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/79.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view"
+          style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/79.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -200,7 +207,8 @@
                   available. Create your own, stunning website.</strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/"
+                class="btn btn-outline-white btn-lg">Start
                 free tutorial
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
@@ -244,8 +252,8 @@
           <!--Grid column-->
           <div class="col-md-6 mb-4">
 
-            <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half"
-              alt="">
+            <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg"
+              class="img-fluid z-depth-1-half" alt="">
 
           </div>
           <!--Grid column-->
@@ -270,7 +278,8 @@
             </p>
 
             <!-- CTA -->
-            <a target="_blank" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" class="btn btn-grey btn-md">Download
+            <a target="_blank" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+              class="btn btn-grey btn-md">Download
               <i class="fas fa-download ml-1"></i>
             </a>
             <a target="_blank" href="https://mdbootstrap.com/docs/jquery/components/" class="btn btn-grey btn-md">Live
@@ -353,7 +362,8 @@
 
             <p class="h5 text-center mb-4">Watch our "5 min Quick Start" tutorial</p>
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cXTThxoywNQ" allowfullscreen></iframe>
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cXTThxoywNQ"
+                allowfullscreen></iframe>
             </div>
           </div>
           <!--/Grid column-->
@@ -659,7 +669,8 @@
               </div>
               <div class="col-10 mb-2">
                 <h5 class="feature-title font-bold mb-1">SASS files</h5>
-                <p class="grey-text mt-2">Arranged and well documented .scss files can't wait until you compile them.</p>
+                <p class="grey-text mt-2">Arranged and well documented .scss files can't wait until you compile them.
+                </p>
               </div>
             </div>
             <!--/Grid row-->
@@ -681,11 +692,12 @@
 
     <!--Call to action-->
     <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+        target="_blank" role="button">Download MDB
         <i class="fas fa-download ml-2"></i>
       </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank"
+        role="button">Start
         free tutorial
         <i class="fas fa-graduation-cap ml-2"></i>
       </a>
@@ -740,15 +752,16 @@
   </footer>
   <!--/.Footer-->
 
+
   <!-- SCRIPTS -->
   <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
   <!-- Initializations -->
   <script type="text/javascript">
     // Animations initialization

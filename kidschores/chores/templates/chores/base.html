@@ -34,8 +34,8 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-                <strong>CHORES</strong>
+            <a class="navbar-brand" href="#">
+                <strong>Chore</strong>
             </a>
 
             <!-- Collapse -->
@@ -55,58 +55,49 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'chores:chore_list' %}" target="_blank">Available Chores</a>
+                        <a class="nav-link" href="{% url 'chores:chore_list' %}">Chore List</a>
                     </li>
 
+                    <!--if authenticated-->
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <strong>Hi {{ user.username }}</strong>
-                        <a class="nav-link" href="{% url 'chores:logout' %}" target="_blank">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-                            tutorials</a>
-                    </li>
-                </ul>
-                {% else %}
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        <a href="{% url 'chores:login' %}" class="nav-link border border-light rounded" target="_blank">
-                            <i class="fab fa-github mr-2"></i>LOGIN
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'chores:logout' %}">Logout
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'chores:register' %}" target="_blank">Register</a>
+                        <a class="nav-link" href="{% url 'chores:profile' %}">Profile
+                        </a>
                     </li>
-                </ul>
-                {% endif %}
 
-                <!-- Right -->
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://github.com/mdbootstrap/bootstrap-material-design"
-                            class="nav-link border border-light rounded" target="_blank">
-                            <i class="fab fa-github mr-2"></i>
-                        </a>
-                    </li>
-                </ul>
 
             </div>
+            <!--if not logged in-->
+            {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'chores:login' %}">Login
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'chores:register' %}">Register
+                </a>
+            </li>
+
+            {% endif %}
+            </ul>
+
+
+
+
+
+
+        </div>
 
         </div>
     </nav>
     <!-- Navbar -->
+
 
 
     <div class="container">
